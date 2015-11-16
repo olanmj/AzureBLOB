@@ -9,28 +9,17 @@ using Microsoft.WindowsAzure.Storage.Auth;
 using Microsoft.WindowsAzure.Storage.Blob;
 using Microsoft.Azure;
 using System.IO;
+using AzurePix.Helpers;
 
 namespace AzurePix.Controllers
 {
     public class HomeController : Controller
     {
+        private IStorageHandler handler  = new LocalFileHandler();
+
         public ActionResult Index()
         {
             return View(ShowBlobs());
-        }
-
-        public ActionResult About()
-        {
-            ViewBag.Message = "Your application description page.";
-
-            return View();
-        }
-
-        public ActionResult Contact()
-        {
-            ViewBag.Message = "Your contact page.";
-
-            return View();
         }
 
         public List<string> ShowBlobs()
@@ -55,7 +44,7 @@ namespace AzurePix.Controllers
 
             return names;
         }
-
+        
         public ActionResult Upload()
         {
             return View();
@@ -64,27 +53,42 @@ namespace AzurePix.Controllers
         [HttpPost]
         public ActionResult Upload(HttpPostedFileBase file)
         {
-            // Retrieve storage account from connection string.
-            CloudStorageAccount storageAccount = CloudStorageAccount.Parse(
-                                        CloudConfigurationManager.GetSetting("StorageConnectionString"));
+            //// Retrieve storage account from connection string.
+            //CloudStorageAccount storageAccount = CloudStorageAccount.Parse(
+            //                            CloudConfigurationManager.GetSetting("StorageConnectionString"));
 
-            // Create the blob client.
-            CloudBlobClient blobClient = storageAccount.CreateCloudBlobClient();
+            //// Create the blob client.
+            //CloudBlobClient blobClient = storageAccount.CreateCloudBlobClient();
 
-            // Retrieve reference to a previously created container.
-            CloudBlobContainer container = blobClient.GetContainerReference("fakebook");
+            //// Retrieve reference to a previously created container.
+            //CloudBlobContainer container = blobClient.GetContainerReference("fakebook");
 
-            // Retrieve reference to a blob.
-            CloudBlockBlob blockBlob = container.GetBlockBlobReference(Path.GetFileName(file.FileName));
+            //// Retrieve reference to a blob.
+            //CloudBlockBlob blockBlob = container.GetBlockBlobReference(Path.GetFileName(file.FileName));
+            //// Use this for Azure hosted app
+            //blockBlob.UploadFromStream(file.InputStream);
+            //// Create or overwrite the blob with contents from a local file.
+            ////using (var fileStream = System.IO.File.OpenRead(file.FileName))
+            ////{
+            ////    blockBlob.UploadFromStream(fileStream);
+            ////}
 
-            // Create or overwrite the blob with contents from a local file.
-            using (var fileStream = System.IO.File.OpenRead(file.FileName))
-            {
-                blockBlob.UploadFromStream(fileStream);
-            }
-
+            handler.Upload(file);
             return RedirectToAction("Index");
         }
 
-}
+        public ActionResult About()
+        {
+            ViewBag.Message = "Your application description page.";
+
+            return View();
+        }
+
+        public ActionResult Contact()
+        {
+            ViewBag.Message = "Your contact page.";
+
+            return View();
+        }
+    }
 }
