@@ -1,0 +1,16 @@
+﻿@model List<string>
+@{
+    ViewBag.Title = "ShowBlobs";
+}
+
+<h2>ShowBlobs</h2>
+Number of blobs: @Model.Count
+
+<ul>
+    @foreach (var item in Model)
+    {
+        <li>@item</li>
+    }
+
+
+</ul>

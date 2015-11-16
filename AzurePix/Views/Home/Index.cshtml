@@ -1,0 +1,20 @@
+﻿@model List<string>
+
+@{
+    ViewBag.Title = "Home Page";
+}
+
+<h2>Blob Storage Test</h2>
+
+@Html.ActionLink("Upload", "Upload", null, new { @class = "btn btn-info" }) 
+
+<div>
+    Number of blobs: @Model.Count
+
+    <ul>
+        @foreach (var item in Model)
+        {
+            <li>@item</li>
+        }
+    </ul>
+</div>

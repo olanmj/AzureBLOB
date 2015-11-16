@@ -1,0 +1,36 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio 14
+VisualStudioVersion = 14.0.23107.0
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "AzurePix", "AzurePix\AzurePix.csproj", "{3E8EDAC2-9F72-4541-B247-6140043C1D50}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "PublishScripts", "PublishScripts", "{23AC3F35-FAAA-49F4-A76F-8DEEEF0171C5}"
+	ProjectSection(SolutionItems) = preProject
+		PublishScripts\AzureVMPublishModule.psm1 = PublishScripts\AzureVMPublishModule.psm1
+		PublishScripts\Publish-WebApplicationVM.ps1 = PublishScripts\Publish-WebApplicationVM.ps1
+	EndProjectSection
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Configurations", "Configurations", "{A36B22AA-9E43-4D8F-AAD2-0E7DDE2D4030}"
+	ProjectSection(SolutionItems) = preProject
+		PublishScripts\Configurations\AzurePix-WAWS-dev.json = PublishScripts\Configurations\AzurePix-WAWS-dev.json
+	EndProjectSection
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{3E8EDAC2-9F72-4541-B247-6140043C1D50}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{3E8EDAC2-9F72-4541-B247-6140043C1D50}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{3E8EDAC2-9F72-4541-B247-6140043C1D50}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{3E8EDAC2-9F72-4541-B247-6140043C1D50}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(NestedProjects) = preSolution
+		{A36B22AA-9E43-4D8F-AAD2-0E7DDE2D4030} = {23AC3F35-FAAA-49F4-A76F-8DEEEF0171C5}
+	EndGlobalSection
+EndGlobal
