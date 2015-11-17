@@ -22,7 +22,7 @@ namespace AzurePix.Helpers
             CloudBlobClient blobClient = storageAccount.CreateCloudBlobClient();
 
             // Retrieve reference to a previously created container.
-            CloudBlobContainer container = blobClient.GetContainerReference("fakebook");
+            CloudBlobContainer container = blobClient.GetContainerReference("your-container-name");
 
             List<string> names = new List<string>();
 
@@ -45,7 +45,7 @@ namespace AzurePix.Helpers
             CloudBlobClient blobClient = storageAccount.CreateCloudBlobClient();
 
             // Retrieve reference to a previously created container.
-            CloudBlobContainer container = blobClient.GetContainerReference("fakebook");
+            CloudBlobContainer container = blobClient.GetContainerReference("your-container-name");
 
             // Retrieve reference to a blob.
             CloudBlockBlob blockBlob = container.GetBlockBlobReference(Path.GetFileName(file.FileName));
