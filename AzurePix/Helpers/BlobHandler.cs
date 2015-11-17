@@ -14,7 +14,25 @@ namespace AzurePix.Helpers
     {
         public List<string> GetFileNames()
         {
-            throw new NotImplementedException();
+            // Retrieve storage account from connection string.
+            CloudStorageAccount storageAccount = CloudStorageAccount.Parse(
+                CloudConfigurationManager.GetSetting("StorageConnectionString"));
+
+            // Create the blob client.
+            CloudBlobClient blobClient = storageAccount.CreateCloudBlobClient();
+
+            // Retrieve reference to a previously created container.
+            CloudBlobContainer container = blobClient.GetContainerReference("fakebook");
+
+            List<string> names = new List<string>();
+
+            // Loop over items within the container and output the length and URI.
+            foreach (IListBlobItem item in container.ListBlobs())
+            {
+                names.Add(item.Uri.ToString());
+            }
+
+            return names;
         }
 
         public void Upload(HttpPostedFileBase file)

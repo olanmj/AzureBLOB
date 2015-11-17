@@ -152,8 +152,8 @@
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
     <Compile Include="Helpers\BlobHandler.cs" />
-    <Compile Include="Helpers\IBlobHandler.cs" />
-    <Compile Include="Helpers\LocalFIleHandler.cs" />
+    <Compile Include="Helpers\IStorageHandler.cs" />
+    <Compile Include="Helpers\LocalFileHandler.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>

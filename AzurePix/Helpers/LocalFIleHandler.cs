@@ -10,7 +10,11 @@ namespace AzurePix.Helpers
     {
         public List<string> GetFileNames()
         {
-            throw new NotImplementedException();
+            var uploadDir = System.Web.HttpContext.Current.Server.MapPath("~/images");
+            List<string> names = Directory.EnumerateFiles(uploadDir).ToList();
+
+            return names;
+
         }
 
         public void Upload(HttpPostedFileBase file)
